@@ -1,0 +1,174 @@
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 16px;
+	background-color: #dddddd;
+}
+
+button {
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 8px;
+	box-shadow: 1px 2px 1px 1px #aaaaaa;
+	text-align: justify;
+	color: black;
+}
+
+button:hover {
+	box-shadow: none;
+	color: white;
+}
+
+.upgradesInfo button {
+	height: 60px;
+	width: 60px;
+	font-size: 10px;
+	text-align: center;
+}
+
+.variable {
+	font-weight: bold;
+}
+
+.chargeBar {
+	width: 300px;
+	display: inline-block;
+	margin-right: 50px;
+	position: relative;
+}
+
+.chargeInfo {
+	display: inline-block;
+}
+
+.upgradesInfo {
+	padding-top:10px;
+	display: inline-block;
+
+}
+
+.energyBar {
+	transition: width 0.5s;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 1;
+}
+
+.convertingInfo {
+	display: inline-block;
+	text-align: center;
+}
+
+.convertingInfo img, button img {
+	width: 15px;
+	max-height: 15px;
+}
+
+.colourAmount {
+	font-size: 30px;
+}
+
+.ltTwentyPercent, .twentyPercent, .fortyPercent, .sixtyPercent, .eightyPercent {
+	display: inline;
+	padding: 0 10% 0 10%;
+	z-index: -1; 
+}
+
+.shapeInfo {
+	display: inline-block;
+	text-align: center;
+	margin: 10px;
+	padding-left: 50px;
+}
+
+/*[[[RED ITEMS]]]:*/
+
+#red {
+	margin: 10px;
+	padding: 0 10px 10px 10px;
+	border: solid 5px #ffcdcd;
+	border-radius: 10px;
+}
+
+.redButton {
+	background-color: #ffdddd;
+	border: solid #ff4433 3px;
+}
+
+#red button:hover {
+	background-color: #ff6655;
+}
+
+#redEnergyBar {
+	width: 0;
+	background-color: #ff4040;
+}
+
+.redChargeBar .ltTwentyPercent {
+	background-color: #ffb89f;
+}
+
+.redChargeBar .twentyPercent {
+	background-color: #ffa88f;
+}
+
+.redChargeBar .fortyPercent {
+	background-color: #ff987f;
+}
+
+.redChargeBar .sixtyPercent {
+	background-color: #ff886f;
+}
+
+.redChargeBar .eightyPercent {
+	background-color: #ff785f;
+}
+
+/*[[[BLUE ITEMS]]]:*/
+
+#blue {
+	margin: 10px;
+	padding: 0 10px 10px 10px;
+	border: solid 5px #cdcdff;
+	border-radius: 10px;
+/*	opacity: 0;
+	transition: opacity 2s;
+	pointer-events: none; */
+}
+
+.blueButton {
+	background-color: #ddddff;
+	border: solid #5544ff;
+	color: blue;
+}
+
+#blue button:hover {
+	background-color: #6655ff;
+	border: solid #4433ff;
+	color: white;
+}
+
+#blueEnergyBar {
+	width: 0;
+	background-color: #4040ff;
+}
+
+.blueChargeBar .ltTwentyPercent {
+	background-color: #b89fff;
+}
+
+.blueChargeBar .twentyPercent {
+	background-color: #a88fff;
+}
+
+.blueChargeBar .fortyPercent {
+	background-color: #987fff;
+}
+
+.blueChargeBar .sixtyPercent {
+	background-color: #886fff;
+}
+
+.blueChargeBar .eightyPercent {
+	background-color: #785fff;
+}

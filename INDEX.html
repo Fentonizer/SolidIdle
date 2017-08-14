@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>Solid Idle</title>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="interface.css" />
+	</head>
+	
+	<body>
+		<div id="red">
+			<div id="redInfo">
+				<div class="chargeInfo">	
+					<button class="redButton" onMouseDown="redCharge()">CHARGE</button>
+				</div>
+				<div class="chargeBar redChargeBar">
+					<div class="ltTwentyPercent"></div>
+					<div class="twentyPercent"></div>
+					<div class="fortyPercent"></div>
+					<div class="sixtyPercent"></div>
+					<div class="eightyPercent"></div>
+
+					<div id="redEnergyBar" class="energyBar"></div>
+
+					<span id="redEnergyBarPercent">0</span>%
+				</div>
+				<div class="convertingInfo">
+					<span id ="redPerSecond" class="variable">0</span> <img src="red.png" alt="RED">p/s
+				</div>
+				<div class="shapeInfo">
+					<span class="colourAmount"><img src="red.png" alt="RED">:<span id="redAmount" class="variable">0</span>
+				</div>
+			</div>
+			<div class="upgradesInfo">
+				<button class="redButton" onClick="redBuyOne()">+1p/s<br>
+					<span id="redBuyOneCost" class="variable">0</span><img src="red.png" alt="RED"></button>
+				<button class="redButton" onClick="redBuyTwo()">+3p/s<br>
+					<span id="redBuyTwoCost" class="variable">0</span><img src="red.png" alt="RED"></button>
+				<button class="redButton" onClick="redIncreaseCharge()">Charge+<br>
+					<span id="redIncreaseChargeCost" class="variable">0</span><img src="red.png" alt="RED"></button>
+			</div>
+		</div>
+
+		<div id="blue">
+			<div id="blueInfo">
+				<div class="chargeInfo">	
+					<button class="blueButton" onMouseDown="blueCharge()">CHARGE</button>
+				</div>
+
+				<div class="chargeBar blueChargeBar">
+
+					<div class="ltTwentyPercent"></div>
+					<div class="twentyPercent"></div>
+					<div class="fortyPercent"></div>
+					<div class="sixtyPercent"></div>
+					<div class="eightyPercent"></div>
+
+					<div id="blueEnergyBar" class="energyBar"></div>
+
+					<span id="blueEnergyBarPercent">0</span>%
+				</div>
+
+				<div class="convertingInfo">
+					<span id ="bluePerSecond" class="variable">0</span> <img src="blue.png" alt="blue">p/s
+				</div>
+				<div class="shapeInfo">
+					<span class="colourAmount"><img src="blue.png" alt="blue">:<span id="blueAmount" class="variable">0</span>
+				</div>
+			</div>
+			<div class="upgradesInfo">
+				<button class="blueButton" onClick="blueBuyOne()">+1p/s<br>
+					<span id="blueBuyOneCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
+				<button class="blueButton" onClick="blueBuyTwo()">+3p/s<br>
+					<span id="blueBuyTwoCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
+				<button class="blueButton" onClick="blueIncreaseCharge()">Charge+<br>
+					<span id="blueIncreaseChargeCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
+			</div>
+		</div>
+
+		<div>
+			TO DO and IDEAS:
+			<ul>
+				<li>Add upgrade for max charge</li>
+				<li>Add building count</li>
+				<li>Add feedback for charge amount</li>
+				<li>Add purchases with blue for red upgrades</li>
+				<li>BLUE to go live</li>
+				<li>Overhaul code. Better classes/IDs to facilitate hidden game elements</li>
+				<li>GREEN</li>
+				<li>YELLOW</li>
+			</ul>
+
+		</div>
+
+		<script type="text/javascript" src="main.js"></script>
+
+	</body>
+</html>
