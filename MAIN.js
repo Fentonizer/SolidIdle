@@ -7,7 +7,7 @@ var costChangeRate = 1.1;
 var redEnergy = 0;
 var redEnergyMax = 100;
 var redPerSecond = 0;
-var redAmount = 00;
+var redAmount = 0;
 var redPerSecondAuto = 0;
 var redBuyOneCost = 100;
 var redBuyTwoCost = 500;
@@ -31,13 +31,6 @@ var blueIncreaseChargeCost = 2000;
 var bluePerSecondEnergy = 0;
 var blueEnergyBar = 0;
 
-// INITALISE VARAIBLES ON LOAD. HTML ELEMENTS AT "0" SO I DON'T HAVE TO CHANGE THEM
-// EVERYTIME I WANT TO FIDDLE WITH THE STARTING VALUES.
-
-//		THESE TWO LINES CAN UNHIDE ELEMENTS THAT ARE INTENDED TO NOT BE AVALIABLE
-//		WHEN THE GAME FIRST STARTS. 
-
-
 window.addEventListener('load',
 	function() {
 		// document.getElementById("").innerHTML = ;
@@ -53,7 +46,6 @@ window.addEventListener('load',
 		document.getElementById("blueBuyTwoCost").innerHTML = blueBuyTwoCost;
 		document.getElementById("blueEnergyBarPercent").innerHTML = blueEnergyBarPercent;
 		document.getElementById("blueIncreaseChargeCost").innerHTML = blueIncreaseChargeCost;
-		
 }, false);
 
 // [[[RED CHARGING/BUYING/ETC]]]
@@ -74,7 +66,6 @@ function redConvert() {
 	} else {
 		redPerSecondEnergy = 0;
 	}
-	// document.getElementById("redEnergy").innerHTML = redEnergy;
 }
 
 function redBuyOne() {
