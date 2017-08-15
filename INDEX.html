@@ -1,3 +1,5 @@
+<!-- So, wait, if I change this does the git know and stage it automatically? -->
+<!-- https://github.com/Fentonizer/SolidIdle -->
 
 <!DOCTYPE html>
 <html>
@@ -10,72 +12,80 @@
 	</head>
 	
 	<body>
-		<div id="red">
-			<div id="redInfo">
-				<div class="chargeInfo">	
-					<button class="redButton" onMouseDown="redCharge()">CHARGE</button>
-				</div>
-				<div class="chargeBar redChargeBar">
-					<div class="ltTwentyPercent"></div>
-					<div class="twentyPercent"></div>
-					<div class="fortyPercent"></div>
-					<div class="sixtyPercent"></div>
-					<div class="eightyPercent"></div>
-
-					<div id="redEnergyBar" class="energyBar"></div>
-
-					<span id="redEnergyBarPercent">0</span>%
-				</div>
-				<div class="convertingInfo">
-					<span id ="redPerSecond" class="variable">0</span> <img src="red.png" alt="RED">p/s
-				</div>
-				<div class="shapeInfo">
-					<span class="colourAmount"><img src="red.png" alt="RED">:<span id="redAmount" class="variable">0</span>
-				</div>
+		<div class="red wrapper">
+			
+			<div class="chargeInfo">	
+				<button class="red button" onMouseDown="redCharge()">CHARGE</button>
 			</div>
+
+			<div class="red chargeBar">
+				<div class="ltTwentyPercent"></div>
+				<div class="twentyPercent"></div>
+				<div class="fortyPercent"></div>
+				<div class="sixtyPercent"></div>
+				<div class="eightyPercent"></div>
+				<div class="energyBar" id="redEnergyBar"></div>
+				<span id="redEnergyBarPercent">0</span>%
+			</div>
+
+			<div class="convertingInfo">
+				<span id ="redPerSecond" class="variable">0</span> <img src="red.png" alt="RED">p/s
+			</div>
+
+			<div class="shapeInfo">
+				<span class="colourAmount"><img src="red.png" alt="RED">:<span id="redAmount" class="variable">0</span>
+			</div>
+			
 			<div class="upgradesInfo">
-				<button class="redButton" onClick="redBuyOne()">+1p/s<br>
-					<span id="redBuyOneCost" class="variable">0</span><img src="red.png" alt="RED"></button>
-				<button class="redButton" onClick="redBuyTwo()">+3p/s<br>
-					<span id="redBuyTwoCost" class="variable">0</span><img src="red.png" alt="RED"></button>
-				<button class="redButton" onClick="redIncreaseCharge()">Charge+<br>
-					<span id="redIncreaseChargeCost" class="variable">0</span><img src="red.png" alt="RED"></button>
+				<button class="red button" onClick="redBuyOne()">+1p/s<br>
+					<span id="redBuyOneCost" class="variable">0</span><br>
+					<img src="red.png" alt="RED"></button>
+				<button class="red button" onClick="redBuyTwo()">+3p/s<br>
+					<span id="redBuyTwoCost" class="variable">0</span><br>
+					<img src="red.png" alt="RED"></button>
+				<button class="red button" id="blueUnlock" onClick="redUnlockBlue()">???<br>
+					<span id="redUnlockBlueCost" class="variable">7500</span><br>
+					<img src="red.png" alt="RED"></button>
+				<button class="blue button" onClick="redIncreaseCharge()">Charge+<br>
+					<span id="redIncreaseChargeCost" class="variable">0</span><br>
+					<img src="blue.png" alt="BLUE"></button>
 			</div>
 		</div>
 
-		<div id="blue">
-			<div id="blueInfo">
-				<div class="chargeInfo">	
-					<button class="blueButton" onMouseDown="blueCharge()">CHARGE</button>
-				</div>
+		<div class="blue wrapper">
 
-				<div class="chargeBar blueChargeBar">
-
-					<div class="ltTwentyPercent"></div>
-					<div class="twentyPercent"></div>
-					<div class="fortyPercent"></div>
-					<div class="sixtyPercent"></div>
-					<div class="eightyPercent"></div>
-
-					<div id="blueEnergyBar" class="energyBar"></div>
-
-					<span id="blueEnergyBarPercent">0</span>%
-				</div>
-
-				<div class="convertingInfo">
-					<span id ="bluePerSecond" class="variable">0</span> <img src="blue.png" alt="blue">p/s
-				</div>
-				<div class="shapeInfo">
-					<span class="colourAmount"><img src="blue.png" alt="blue">:<span id="blueAmount" class="variable">0</span>
-				</div>
+			<div class="chargeInfo">	
+				<button class="blue button" onMouseDown="blueCharge()">CHARGE</button>
 			</div>
+
+			<div class="blue chargeBar">
+				<div class="ltTwentyPercent"></div>
+				<div class="twentyPercent"></div>
+				<div class="fortyPercent"></div>
+				<div class="sixtyPercent"></div>
+				<div class="eightyPercent"></div>
+				<div class="energyBar" id="blueEnergyBar" ></div>
+				<span id="blueEnergyBarPercent">0</span>%
+			</div>
+
+			<div class="convertingInfo">
+				<span id ="bluePerSecond" class="variable">0</span> <img src="blue.png" alt="BLUE">p/s
+			</div>
+			
+			<div class="shapeInfo">
+				<span class="colourAmount"><img src="blue.png" alt="blue">:<span id="blueAmount" class="variable">0</span>
+			</div>
+			
 			<div class="upgradesInfo">
-				<button class="blueButton" onClick="blueBuyOne()">+1p/s<br>
-					<span id="blueBuyOneCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
-				<button class="blueButton" onClick="blueBuyTwo()">+3p/s<br>
-					<span id="blueBuyTwoCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
-				<button class="blueButton" onClick="blueIncreaseCharge()">Charge+<br>
-					<span id="blueIncreaseChargeCost" class="variable">0</span><img src="blue.png" alt="blue"></button>
+				<button class="blue button" onClick="blueBuyOne()">+1p/s<br>
+					<span id="blueBuyOneCost" class="variable">0</span><br>
+					<img src="blue.png" alt="blue"></button>
+				<button class="blue button" onClick="blueBuyTwo()">+3p/s<br>
+					<span id="blueBuyTwoCost" class="variable">0</span><br>
+					<img src="blue.png" alt="blue"></button>
+				<button class="blue button" onClick="blueIncreaseCharge()">Charge+<br>
+					<span id="blueIncreaseChargeCost" class="variable">0</span><br>
+					<img src="blue.png" alt="blue"></button>
 			</div>
 		</div>
 
@@ -85,9 +95,7 @@
 				<li>Add upgrade for max charge</li>
 				<li>Add building count</li>
 				<li>Add feedback for charge amount</li>
-				<li>Add purchases with blue for red upgrades</li>
-				<li>BLUE to go live</li>
-				<li>Overhaul code. Better classes/IDs to facilitate hidden game elements</li>
+				<li>One time upgrades to dissapear</li>
 				<li>GREEN</li>
 				<li>YELLOW</li>
 			</ul>

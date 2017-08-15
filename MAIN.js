@@ -1,20 +1,21 @@
 //GLOBAL VARS
 
-var costChangeRate = 1.3;
+var costChangeRate = 1.1;
 
 //RED VARS
 
 var redEnergy = 0;
 var redEnergyMax = 100;
 var redPerSecond = 0;
-var redAmount = 0;
+var redAmount = 00;
 var redPerSecondAuto = 0;
 var redBuyOneCost = 100;
 var redBuyTwoCost = 500;
-var redChargeRate = 1;
+var redChargeRate = 2;
 var redIncreaseChargeCost = 1000; 
 var redPerSecondEnergy = 0;
 var redEnergyBar = 0;
+var redUnlockBlueCost = 7500;
 
 //BLUE VARS
 
@@ -23,9 +24,9 @@ var blueEnergyMax = 100;
 var bluePerSecond = 0;
 var blueAmount = 0;
 var bluePerSecondAuto = 0;
-var blueBuyOneCost = 300;
-var blueBuyTwoCost = 7500;
-var blueChargeRate = 3;
+var blueBuyOneCost = 150;
+var blueBuyTwoCost = 750;
+var blueChargeRate = 1;
 var blueIncreaseChargeCost = 2000; 
 var bluePerSecondEnergy = 0;
 var blueEnergyBar = 0;
@@ -35,8 +36,7 @@ var blueEnergyBar = 0;
 
 //		THESE TWO LINES CAN UNHIDE ELEMENTS THAT ARE INTENDED TO NOT BE AVALIABLE
 //		WHEN THE GAME FIRST STARTS. 
-//		document.getElementById("blue").style.opacity = "1";
-//		document.getElementById("blue").style.pointerEvents = "auto";
+
 
 window.addEventListener('load',
 	function() {
@@ -98,8 +98,8 @@ function redBuyTwo() {
 }
 
 function redIncreaseCharge() {
-	if(redAmount >= redIncreaseChargeCost) {
-		redAmount = redAmount - redIncreaseChargeCost;
+	if(blueAmount >= redIncreaseChargeCost) {
+		blueAmount = blueAmount - redIncreaseChargeCost;
 		redChargeRate++;
 		redIncreaseChargeCost = Math.round(redIncreaseChargeCost * costChangeRate);
 	}
@@ -110,6 +110,18 @@ function redIncreaseCharge() {
 function calcRedPerSecond() {
 	redPerSecond = redPerSecondAuto + redPerSecondEnergy;
 	document.getElementById("redPerSecond").innerHTML = redPerSecond;
+}
+
+function redUnlockBlue() {
+	if(redAmount >= redUnlockBlueCost) {
+		redAmount = redAmount - redUnlockBlueCost;
+		var x = document.getElementsByClassName("blue");
+		var i;
+		for (i = 0; i < x.length; i++) {
+			x[i].style.opacity = "1";
+			x[i].style.pointerEvents = "auto";
+		}
+	}
 }
 
 // [[[BLUE CHARGING/BUYING/ETC]]]

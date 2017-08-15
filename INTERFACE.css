@@ -4,7 +4,8 @@ body {
 	background-color: #dddddd;
 }
 
-button {
+.button {
+	display: inline;
 	font-family: 'Open Sans', sans-serif;
 	border-radius: 8px;
 	box-shadow: 1px 2px 1px 1px #aaaaaa;
@@ -17,7 +18,12 @@ button:hover {
 	color: white;
 }
 
-.upgradesInfo button {
+.wrapper {
+	padding: 0 5px 5px 5px;
+	border-radius: 10px;
+}
+
+.upgradesInfo .button {
 	height: 60px;
 	width: 60px;
 	font-size: 10px;
@@ -40,9 +46,7 @@ button:hover {
 }
 
 .upgradesInfo {
-	padding-top:10px;
-	display: inline-block;
-
+	padding-top: 20px;
 }
 
 .energyBar {
@@ -66,36 +70,53 @@ button:hover {
 
 .colourAmount {
 	font-size: 30px;
+	padding-right: 20px;
 }
 
 .ltTwentyPercent, .twentyPercent, .fortyPercent, .sixtyPercent, .eightyPercent {
 	display: inline;
 	padding: 0 10% 0 10%;
-	z-index: -1; 
+	opacity: 0.3;
+}
+
+.ltTwentyPercent {
+	background-color: #ffffff;
+}
+
+.twentyPercent {
+	background-color: #dddddd;
+}
+
+.fortyPercent {
+	background-color: #bbbbbb;
+}
+
+.sixtyPercent {
+	background-color: #999999;
+}
+
+.eightyPercent {
+	background-color: #777777;
 }
 
 .shapeInfo {
 	display: inline-block;
 	text-align: center;
-	margin: 10px;
 	padding-left: 50px;
 }
 
 /*[[[RED ITEMS]]]:*/
 
-#red {
-	margin: 10px;
-	padding: 0 10px 10px 10px;
+.red.wrapper {
 	border: solid 5px #ffcdcd;
-	border-radius: 10px;
 }
 
-.redButton {
+.red.button {
 	background-color: #ffdddd;
 	border: solid #ff4433 3px;
 }
 
-#red button:hover {
+.red.button:hover {
 	background-color: #ff6655;
 }
 
@@ -104,45 +125,29 @@ button:hover {
 	background-color: #ff4040;
 }
 
-.redChargeBar .ltTwentyPercent {
-	background-color: #ffb89f;
-}
-
-.redChargeBar .twentyPercent {
-	background-color: #ffa88f;
-}
-
-.redChargeBar .fortyPercent {
-	background-color: #ff987f;
-}
-
-.redChargeBar .sixtyPercent {
-	background-color: #ff886f;
-}
-
-.redChargeBar .eightyPercent {
-	background-color: #ff785f;
+.red.chargeBar {
+	background-color: #ff4444;
 }
 
 /*[[[BLUE ITEMS]]]:*/
 
-#blue {
-	margin: 10px;
-	padding: 0 10px 10px 10px;
-	border: solid 5px #cdcdff;
-	border-radius: 10px;
-/*	opacity: 0;
-	transition: opacity 2s;
-	pointer-events: none; */
+.blue {
+	opacity: 0;
+	transition: opacity 5s;
+	pointer-events: none;
 }
 
-.blueButton {
+.blue.wrapper {
+	border: solid 5px #cdcdff;
+}
+
+.blue.button {
 	background-color: #ddddff;
 	border: solid #5544ff;
 	color: blue;
 }
 
-#blue button:hover {
+.blue.button:hover {
 	background-color: #6655ff;
 	border: solid #4433ff;
 	color: white;
@@ -153,22 +158,6 @@ button:hover {
 	background-color: #4040ff;
 }
 
-.blueChargeBar .ltTwentyPercent {
-	background-color: #b89fff;
-}
-
-.blueChargeBar .twentyPercent {
-	background-color: #a88fff;
-}
-
-.blueChargeBar .fortyPercent {
-	background-color: #987fff;
-}
-
-.blueChargeBar .sixtyPercent {
-	background-color: #886fff;
-}
-
-.blueChargeBar .eightyPercent {
-	background-color: #785fff;
+.blue.chargeBar {
+	background-color: #4444ff;
 }
