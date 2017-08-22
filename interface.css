@@ -45,6 +45,7 @@ button:focus {
 	border-radius: 10px;
 	border: 5px solid;
 	margin-bottom: 10px;
+	min-width: 1000px;
 }
 
 .gameArea {
@@ -59,6 +60,12 @@ button:focus {
 	display: inline-block;
 	vertical-align: top;
 	pointer-events: none;
+	text-align: right;
+}
+
+.buildingsInfo p {
+	padding: 0;
+	margin: 0;
 }
 
 .variable {
@@ -97,6 +104,10 @@ button:focus {
 	text-align: center;
 	padding-top: 3px;
 	margin: 0;
+}
+
+.oneTime {
+	display: none;
 }
 
 .energyBar {
