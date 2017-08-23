@@ -17,6 +17,11 @@ body {
 	padding: 0;
 }
 
+#titleBar p {
+	margin: 0;
+	padding: 0;
+}
+
 button {
 	display: inline;
 	font-family: 'Open Sans', sans-serif;
