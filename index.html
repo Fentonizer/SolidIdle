@@ -14,13 +14,13 @@
 	<body>
 		
 		<div id="titleBar">
-			<h1>SOLID IDLE</h1><em>early alpha 22-08-2017</em>
+			<h1>SOLID IDLE</h1><em>early alpha 23-08-2017</em>
 		</div>
 
 		<div class="red colourWrapper">
 			<div class="gameArea">
 
-				<div class="chargeInfo">	
+				<div class="red chargeInfo">	
 					<button class="button" onMouseDown="redCharge()">CHARGE</button>
 					<div class="chargeBar">
 						<div class="ltTwentyPercent"></div>
@@ -42,29 +42,29 @@
 						<span id="redPerSecond" class="variable">0</span><br><img src="red.png" alt="RED">p/s
 						<p>owned:</p>
 					</div>
-					<div class="upgradeButton">
+					<div class="red upgradeButton">
 						<button onClick="redConversionUpgrade()">Conv+<br>
 						<span id="redConversionUpgradeCost" class="variable">0</span><br>
 						<img src="red.png" alt="RED"></button>
-						<p><span id="redBuildingOneCount">0</span></p>
+						<p><span id="redConversionUpgradeCount">0</span></p>
 					</div>
-					<div class="upgradeButton">
-					<button onClick="redBuyTwo()">Decay-<br>
-						<span id="redBuyTwoCost" class="variable">0</span><br>
+					<div id="blueUnlock" class="red upgradeButton">
+					<button onClick="redUnlockBlue()">BLUE<br>
+						<span id="redUnlockBlueCost" class="variable">0</span><br>
 						<img src="red.png" alt="RED"></button>
-						<p><span id="redBuildingTwoCount">0</span></p>
+						
 					</div>
-					<div id="blueUnlock" class="upgradeButton">
-					<button onClick="redUnlockBlue()">???<br>
-						<span id="redUnlockBlueCost" class="variable">7500</span><br>
-						<img src="red.png" alt="RED"></button>
-						<p>0</p>
-					</div>
-					<div class="blue upgradeButton">
+					<div class="blue upgradeButton blueHidden">
 					<button onClick="redIncreaseCharge()">Charge+<br>
 						<span id="redIncreaseChargeCost" class="variable">0</span><br>
 						<img src="blue.png" alt="BLUE"></button>
 						<p>0</p>
+					</div>
+					<div class="green upgradeButton greenHidden">
+					<button onClick="redDecayRateDown()">Decay-<br>
+						<span id="redDecayRateDownCost" class="variable">0</span><br>
+						<img src="green.png" alt="GREEN"></button>
+						<p><span id="redDecayRateDownCount">0</span></p>
 					</div>
 				</div>
 			</div>
@@ -75,10 +75,10 @@
 			</div>
 		</div>
 
-		<div class="blue colourWrapper">
+		<div class="blue colourWrapper blueHidden">
 			<div class="gameArea">
 
-				<div class="chargeInfo">	
+				<div class="blue chargeInfo">	
 					<button class="button" onMouseDown="blueCharge()">CHARGE</button>
 					<div class="chargeBar">
 						<div class="ltTwentyPercent"></div>
@@ -100,35 +100,107 @@
 						<span id ="bluePerSecond" class="variable">0</span><br><img src="blue.png" alt="BLUE">p/s
 						<p>owned:</p>
 					</div>
-					<div class="upgradeButton">
-						<button onClick="blueBuyOne()">+1p/s<br>
-						<span id="blueBuyOneCost" class="variable">0</span><br>
-						<img src="blue.png" alt="blue"></button>
-						<p>0</p>
+					<div class="red upgradeButton">
+						<button onClick="blueConversionUpgrade()">Conv+<br>
+						<span id="blueConversionUpgradeCost" class="variable">0</span><br>
+						<img src="red.png" alt="RED"></button>
+						<p><span id="blueConversionUpgradeCount">0</span></p>
 					</div>
-					<div class="upgradeButton">
-						<button class="blue button" onClick="blueBuyTwo()">+3p/s<br>
-						<span id="blueBuyTwoCost" class="variable">0</span><br>
-						<img src="blue.png" alt="blue"></button>
-						<p>0</p>
-					</div>
-					<div class="upgradeButton">
-						<button class="blue button" onClick="blueIncreaseCharge()">Charge+<br>
+					<div class="blue upgradeButton">
+						<button onClick="blueIncreaseCharge()">Charge+<br>
 						<span id="blueIncreaseChargeCost" class="variable">0</span><br>
 						<img src="blue.png" alt="blue"></button>
+						<p><span id="blueIncreaseChargeCount">0</span></p>
+					</div>
+					<div id="greenUnlock" class="blue upgradeButton">
+						<button onClick="blueUnlockGreen()">GREEN<br>
+						<span id="blueUnlockGreenCost" class="variable">0</span><br>
+						<img src="blue.png" alt="BLUE"></button>
+
+					</div>
+					<div class="green upgradeButton greenHidden">
+						<button onClick="blueDecayRateDown()">Decay-<br>
+						<span id="blueDecayRateDownCost" class="variable">0</span><br>
+						<img src="green.png" alt="GREEN"></button>
 						<p>0</p>
 					</div>				
 				</div>
+			</div>
+
+			<div class="blue buildingsInfo">
+				<p>Charge Rate: <span class="variable" id="blueChargeRate">0</span>%</p>
+				<p>Decay Rate: <span class="variable" id="blueDecayRate">0</span>%</p>
+			</div>
+
+		</div>
+
+		<div class="green colourWrapper greenHidden">
+			<div class="gameArea">
+
+				<div class="green chargeInfo">	
+					<button class="button" onMouseDown="greenCharge()">CHARGE</button>
+					<div class="chargeBar">
+						<div class="ltTwentyPercent"></div>
+						<div class="twentyPercent"></div>
+						<div class="fortyPercent"></div>
+						<div class="sixtyPercent"></div>
+						<div class="eightyPercent"></div>
+						<div class="energyBar" id="greenEnergyBar"></div>
+						<span id="greenEnergyBarPercent">0</span>%
+					</div>
+				</div>
+
+				<div class="shapeInfo">
+					<img src="green.png" alt="GREEN">:<span id="greenAmount" class="variable">0</span>
+				</div>
+				
+				<div class="upgradesInfo">
+					<div class="convertingInfo">
+						<span id="greenPerSecond" class="variable">0</span><br><img src="green.png" alt="GREEN">p/s
+						<p>owned:</p>
+					</div>
+					<div class="red upgradeButton">
+						<button onClick="greenConversionUpgrade()">Conv+<br>
+						<span id="greenConversionUpgradeCost" class="variable">0</span><br>
+						<img src="red.png" alt="RED"></button>
+						<p><span id="greenConversionUpgradeCount">0</span></p>
+					</div>
+					<div class="blue upgradeButton">
+					<button onClick="greenIncreaseCharge()">Charge+<br>
+						<span id="greenIncreaseChargeCost" class="variable">0</span><br>
+						<img src="blue.png" alt="BLUE"></button>
+						<p>0</p>
+					</div>
+					<div class="green upgradeButton">
+					<button onClick="greenDecayRateDown()">Decay-<br>
+						<span id="greenDecayRateDownCost" class="variable">0</span><br>
+						<img src="green.png" alt="GREEN"></button>
+						<p><span id="greenDecayRateDownCount">0</span></p>
+					</div>
+					<div id="yellowUnlock" class="green upgradeButton">
+					<button onClick="greenUnlockYellow()">YELLOW<br>
+						<span id="greenUnlockYellowCost" class="variable">0</span><br>
+						<img src="green.png" alt="GREEN"></button>
+						<p>0</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="green buildingsInfo">
+				<p>Charge Rate: <span class="variable" id="greenChargeRate">0</span>%</p>
+				<p>Decay Rate: <span class="variable" id="greenDecayRate">0</span>%</p>
 			</div>
 		</div>
 
 		<div>
 			TO DO and IDEAS:
 			<ul>
-				<li>Add upgrade for max charge</li>
-				<li>Implement the same existing upgrades in BLUE</li>
-				<li>GREEN</li>
+				<li>Add upgrade for charge rate</li>
+				<li>Get green working</li>
+				<li>Balance the various purchase rates</li>
 				<li>YELLOW</li>
+				<li>PURPLE</li>
+				<li>ORANGE</li>
 			</ul>
 
 		</div>

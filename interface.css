@@ -169,7 +169,7 @@ button:focus {
 	display: inline-block;
 	padding-left: 50px;
 	font-size: 30px;
-	padding-right: 200px;
+	min-width: 300px;
 }
 
 /*[[[RED ITEMS]]]:*/
@@ -178,12 +178,12 @@ button:focus {
 	border-color: #ffcdcd;
 }
 
-.red button {
+.red.upgradeButton button, .red.chargeInfo button {
 	background-color: #ffdddd;
 	border: solid #ff4433 3px;
 }
 
-.red button:hover {
+.red.upgradeButton button:hover, .red.chargeInfo button:hover {
 	background-color: #ff6655;
 }
 
@@ -202,7 +202,7 @@ button:focus {
 
 /*[[[BLUE ITEMS]]]:*/
 
-.blue {
+.blueHidden {
 	opacity: 0;
 	transition: opacity 3s;
 	pointer-events: none;
@@ -212,14 +212,13 @@ button:focus {
 	border: solid 5px #cdcdff;
 }
 
-.blue button {
+.blue.upgradeButton button, .blue.chargeInfo button {
 	background-color: #ddddff;
 	border: solid #3344ff 3px;
 }
 
-.blue button:hover {
+.blue.upgradeButton button:hover, .blue.chargeInfo button:hover {
 	background-color: #6655ff;
-	border: solid #4433ff;
 	color: white;
 }
 
@@ -230,4 +229,43 @@ button:focus {
 
 .blue .chargeBar {
 	background-color: #4444ff;
+}
+
+#blueEnergyBarPercent {
+	padding-left: 10px;
+}
+
+/*[[[GREEN ITEMS]]]:*/
+
+.greenHidden {
+	opacity: 0;
+	transition: opacity 3s;
+	pointer-events: none;
+}
+
+.green.colourWrapper {
+	border: solid 5px #cdffcd;
+}
+
+.green.upgradeButton button, .green.chargeInfo button {
+	background-color: #ddffdd;
+	border: solid #33ff44 3px;
+}
+
+.green.upgradeButton button:hover, .green.chargeInfo button:hover {
+	background-color: #66ff55;
+	color: black;
+}
+
+#greenEnergyBar {
+	width: 0;
+	background-color: #40ff40;
+}
+
+.green .chargeBar {
+	background-color: #44ff44;
+}
+
+#greenEnergyBarPercent {
+	padding-left: 10px;
 }
