@@ -34,6 +34,7 @@ button {
 button:hover {
 	box-shadow: none;
 	color: white;
+	cursor: pointer;
 }
 
 button:focus {
