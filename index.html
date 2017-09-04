@@ -15,7 +15,7 @@
 		
 		<div id="titleBar">
 			<h1>SOLID IDLE</h1>
-			<em><p>early alpha 23-08-2017</p>
+			<em><p>early alpha 04-09-2017</p>
 			<p>Don't forget to <strong>CTRL+refresh</strong> if checking for updates! The javascript will be stored locally.</p></em>
 		</div>
 
@@ -60,7 +60,7 @@
 					<button onClick="redIncreaseCharge()">Charge+<br>
 						<span id="redIncreaseChargeCost" class="variable">0</span><br>
 						<img src="blue.png" alt="BLUE"></button>
-						<p>0</p>
+						<p><span id="redIncreaseChargeCount">0</span></p>
 					</div>
 					<div class="green upgradeButton greenHidden">
 					<button onClick="redDecayRateDown()">Decay-<br>
@@ -124,7 +124,7 @@
 						<button onClick="blueDecayRateDown()">Decay-<br>
 						<span id="blueDecayRateDownCost" class="variable">0</span><br>
 						<img src="green.png" alt="GREEN"></button>
-						<p>0</p>
+						<p><span id="blueDecayRateDownCount">0</span></p>
 					</div>				
 				</div>
 			</div>
@@ -171,7 +171,7 @@
 					<button onClick="greenIncreaseCharge()">Charge+<br>
 						<span id="greenIncreaseChargeCost" class="variable">0</span><br>
 						<img src="blue.png" alt="BLUE"></button>
-						<p>0</p>
+						<p><span id="greenIncreaseChargeCount">0</span></p>
 					</div>
 					<div class="green upgradeButton">
 					<button onClick="greenDecayRateDown()">Decay-<br>
@@ -198,14 +198,11 @@
 			TO DO and IDEAS:
 			<ul>
 				<li><strong>SAVING</strong></li>
-				<li>Add upgrade for charge rate</li>
-				<li>Get green working</li>
 				<li>Balance the various purchase rates</li>
 				<li>YELLOW</li>
 				<li>PURPLE</li>
 				<li>ORANGE</li>
 			</ul>
-
 		</div>
 	</body>
 </html>

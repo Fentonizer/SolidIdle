@@ -12,14 +12,15 @@ var redAmount = 0;
 var redConversionUpgradeCost = 100;
 var redConversionUpgradeCount = 0;
 
-var redDecayRateDownCost = 500;
+var redDecayRateDownCost = 50;
 var redDecayRateDownCount = 0;
 var redDecayRate = 3, redDecayRateDisplay = redDecayRate.toFixed(2);
 
-var redChargeRate = 1, redChargeRateDisplay = redChargeRate.toFixed(2);
+var redChargeRate = 3, redChargeRateDisplay = redChargeRate.toFixed(2);
 var redConversionRate = 0;
 
-var redIncreaseChargeCost = 1000; 
+var redIncreaseChargeCost = 1000;
+var redIncreaseChargeCount = 0; 
 
 var redEnergyBar = 0;
 var redUnlockBlueCost = 7500;
@@ -31,17 +32,18 @@ var blueEnergyMax = 100;
 var bluePerSecond = 0;
 var blueAmount = 0;
 
-var blueConversionUpgradeCost = 100;
+var blueConversionUpgradeCost = 200;
 var blueConversionUpgradeCount = 0;
 
-var blueDecayRateDownCost = 500;
+var blueDecayRateDownCost = 1000;
 var blueDecayRateDownCount = 0;
-var blueDecayRate = 3, blueDecayRateDisplay = blueDecayRate.toFixed(2);
+var blueDecayRate = 2, blueDecayRateDisplay = blueDecayRate.toFixed(2);
 
-var blueChargeRate = 1, blueChargeRateDisplay = blueChargeRate.toFixed(2);
+var blueChargeRate = 2, blueChargeRateDisplay = blueChargeRate.toFixed(2);
 var blueConversionRate = 0;
 
-var blueIncreaseChargeCost = 1000; 
+var blueIncreaseChargeCost = 2500;
+var blueIncreaseChargeCount = 0;  
 
 var blueEnergyBar = 0;
 var blueUnlockGreenCost = 75000;
@@ -49,7 +51,26 @@ var blueUnlockGreenCost = 75000;
 
 //GREEN VARS
 
+var greenEnergy = 0;
+var greenEnergyMax = 100;
+var greenPerSecond = 0;
 var greenAmount = 0;
+
+var greenConversionUpgradeCost = 300;
+var greenConversionUpgradeCount = 0;
+
+var greenDecayRateDownCost = 500;
+var greenDecayRateDownCount = 0;
+var greenDecayRate = 3, greenDecayRateDisplay = greenDecayRate.toFixed(2);
+
+var greenChargeRate = 1, greenChargeRateDisplay = greenChargeRate.toFixed(2);
+var greenConversionRate = 0;
+
+var greenIncreaseChargeCost = 1000;
+var greenIncreaseChargeCount = 0;  
+
+var greenEnergyBar = 0;
+var greenUnlockYellowCost = 500000;
 
 window.addEventListener('load',
 	function() {
@@ -60,6 +81,7 @@ window.addEventListener('load',
 		document.getElementById("redDecayRateDownCost").innerHTML = redDecayRateDownCost;
 		document.getElementById("redEnergyBarPercent").innerHTML = redEnergyBarPercent;
 		document.getElementById("redIncreaseChargeCost").innerHTML = redIncreaseChargeCost;
+		document.getElementById("redIncreaseChargeCount").innerHTML = redIncreaseChargeCount;
 		document.getElementById("redChargeRate").innerHTML = redChargeRateDisplay;
 		document.getElementById("redDecayRate").innerHTML = redDecayRateDisplay;
 		document.getElementById("redUnlockBlueCost").innerHTML = redUnlockBlueCost
@@ -70,11 +92,31 @@ window.addEventListener('load',
 		document.getElementById("blueDecayRateDownCost").innerHTML = blueDecayRateDownCost;
 		document.getElementById("blueEnergyBarPercent").innerHTML = blueEnergyBarPercent;
 		document.getElementById("blueIncreaseChargeCost").innerHTML = blueIncreaseChargeCost;
+		document.getElementById("blueIncreaseChargeCount").innerHTML = blueIncreaseChargeCount;
 		document.getElementById("blueChargeRate").innerHTML = blueChargeRateDisplay;
 		document.getElementById("blueDecayRate").innerHTML = blueDecayRateDisplay;
 		document.getElementById("blueUnlockGreenCost").innerHTML = blueUnlockGreenCost;
+
+		document.getElementById("greenPerSecond").innerHTML = greenPerSecond;
+		document.getElementById("greenAmount").innerHTML = greenAmount;
+		document.getElementById("greenConversionUpgradeCost").innerHTML = greenConversionUpgradeCost;
+		document.getElementById("greenDecayRateDownCost").innerHTML = greenDecayRateDownCost;
+		document.getElementById("greenEnergyBarPercent").innerHTML = greenEnergyBarPercent;
+		document.getElementById("greenIncreaseChargeCost").innerHTML = greenIncreaseChargeCost;
+		document.getElementById("greenIncreaseChargeCost").innterHTML = greenIncreaseChargeCount;
+		document.getElementById("greenChargeRate").innerHTML = greenChargeRateDisplay;
+		document.getElementById("greenDecayRate").innerHTML = greenDecayRateDisplay;
+		document.getElementById("greenUnlockYellowCost").innerHTML = greenUnlockYellowCost;
 		
 }, false);
+
+// global functions
+
+function calcPerSecond() {
+	redPerSecond = redConversionRate;
+	bluePerSecond = blueConversionRate;
+	greenPerSecond = greenConversionRate;
+}
 
 // [[[RED CHARGING/BUYING/ETC]]]
 
@@ -102,9 +144,6 @@ function redConversionUpgrade() {
 		redAmount = redAmount - redConversionUpgradeCost;
 		redConversionUpgradeCost = Math.round(redConversionUpgradeCost * costChangeRate);
 		redConversionUpgradeCount++;
-		document.getElementById("redConversionUpgradeCost").innerHTML = redConversionUpgradeCost;
-		document.getElementById("redAmount").innerHTML = redAmount;
-		document.getElementById("redConversionUpgradeCount").innerHTML = redConversionUpgradeCount;
 	}
 }
 
@@ -114,9 +153,7 @@ function redIncreaseCharge() {
 		redChargeRate = Math.round((redChargeRate + 0.15) * 100) / 100;
 		redIncreaseChargeCost = Math.round(redIncreaseChargeCost * costChangeRate);
 		redChargeRateDisplay = redChargeRate.toFixed(2);
-		document.getElementById("redIncreaseChargeCost").innerHTML = redIncreaseChargeCost;
-		document.getElementById("blueAmount").innerHTML = blueAmount;
-		document.getElementById("redChargeRate").innerHTML = redChargeRateDisplay;
+		redIncreaseChargeCount++;
 	}
 }
 
@@ -127,16 +164,7 @@ function redDecayRateDown() {
 		redDecayRateDownCount++;
 		redDecayRate = Math.round((redDecayRate * 0.95) * 100) / 100;
 		redDecayRateDisplay = redDecayRate.toFixed(2)
-		document.getElementById("redDecayRateDownCost").innerHTML = redDecayRateDownCost;
-		document.getElementById("redAmount").innerHTML = redAmount;
-		document.getElementById("redDecayRateDownCount").innerHTML = redDecayRateDownCount;
-		document.getElementById("redDecayRate").innerHTML = redDecayRateDisplay;
 	}
-}
-
-function calcRedPerSecond() {
-	redPerSecond = redConversionRate;
-	document.getElementById("redPerSecond").innerHTML = redPerSecond;
 }
 
 function redUnlockBlue() {
@@ -178,9 +206,6 @@ function blueConversionUpgrade() {
 		redAmount = redAmount - blueConversionUpgradeCost;
 		blueConversionUpgradeCost = Math.round(blueConversionUpgradeCost * costChangeRate);
 		blueConversionUpgradeCount++;
-		document.getElementById("blueConversionUpgradeCost").innerHTML = blueConversionUpgradeCost;
-		document.getElementById("redAmount").innerHTML = redAmount;
-		document.getElementById("blueConversionUpgradeCount").innerHTML = blueConversionUpgradeCount;
 	}
 }
 
@@ -190,9 +215,7 @@ function blueIncreaseCharge() {
 		blueChargeRate = Math.round((blueChargeRate + 0.15) * 100) / 100;
 		blueIncreaseChargeCost = Math.round(blueIncreaseChargeCost * costChangeRate);
 		blueChargeRateDisplay = blueChargeRate.toFixed(2);
-		document.getElementById("blueIncreaseChargeCost").innerHTML = blueIncreaseChargeCost;
-		document.getElementById("blueAmount").innerHTML = blueAmount;
-		document.getElementById("blueChargeRate").innerHTML = blueChargeRateDisplay;
+		blueIncreaseChargeCount++;
 	}
 }
 
@@ -203,16 +226,7 @@ function blueDecayRateDown() {
 		blueDecayRateDownCount++;
 		blueDecayRate = Math.round((blueDecayRate * 0.95) * 100) / 100;
 		blueDecayRateDisplay = blueDecayRate.toFixed(2)
-		document.getElementById("blueDecayRateDownCost").innerHTML = blueDecayRateDownCost;
-		document.getElementById("blueAmount").innerHTML = blueAmount;
-		document.getElementById("blueDecayRateDownCount").innerHTML = blueDecayRateDownCount;
-		document.getElementById("blueDecayRate").innerHTML = blueDecayRateDisplay;
 	}
-}
-
-function calcBluePerSecond() {
-	bluePerSecond = blueConversionRate;
-	document.getElementById("bluePerSecond").innerHTML = bluePerSecond;
 }
 
 function blueUnlockGreen() {
@@ -228,16 +242,110 @@ function blueUnlockGreen() {
 	}
 }
 
+// [[[GREEN CHARGING/BUYING/ETC]]]
+
+function greenCharge() {
+	if(greenEnergy + greenChargeRate <= greenEnergyMax) {
+		greenEnergy = greenEnergy + greenChargeRate;
+	}
+	if(greenEnergy + greenChargeRate >= greenEnergyMax) {
+		greenEnergy = greenEnergyMax;
+	}
+}
+
+function greenConvert() {
+	if(greenEnergy > 0) {
+		greenConversionRate = Math.ceil(greenEnergyBar / 20) * (greenConversionUpgradeCount + 1);
+		greenEnergy = Math.max(greenEnergy - greenDecayRate, 0);
+	}
+	else {
+		greenConversionRate = 0;
+	}
+}
+
+function greenConversionUpgrade() {
+	if(redAmount >= greenConversionUpgradeCost) {
+		redAmount = redAmount - greenConversionUpgradeCost;
+		greenConversionUpgradeCost = Math.round(greenConversionUpgradeCost * costChangeRate);
+		greenConversionUpgradeCount++;
+	}
+}
+
+function greenIncreaseCharge() {
+	if(blueAmount >= greenIncreaseChargeCost) {
+		blueAmount = blueAmount - greenIncreaseChargeCost;
+		greenChargeRate = Math.round((greenChargeRate + 0.15) * 100) / 100;
+		greenIncreaseChargeCost = Math.round(greenIncreaseChargeCost * costChangeRate);
+		greenChargeRateDisplay = greenChargeRate.toFixed(2);
+		greenIncreaseChargeCount++;
+	}
+}
+
+function greenDecayRateDown() {
+	if(greenAmount >= greenDecayRateDownCost) {
+		greenAmount = greenAmount - greenDecayRateDownCost;
+		greenDecayRateDownCost = Math.round(greenDecayRateDownCost * costChangeRate);
+		greenDecayRateDownCount++;
+		greenDecayRate = Math.round((greenDecayRate * 0.95) * 100) / 100;
+		greenDecayRateDisplay = greenDecayRate.toFixed(2)
+	}
+}
+
+// write all variables to the page periodically
+window.setInterval(function () {
+	document.getElementById("redPerSecond").innerHTML = redPerSecond;
+	document.getElementById("redAmount").innerHTML = redAmount;
+	document.getElementById("redConversionUpgradeCost").innerHTML = redConversionUpgradeCost;
+	document.getElementById("redConversionUpgradeCount").innerHTML = redConversionUpgradeCount;
+	document.getElementById("redDecayRateDownCost").innerHTML = redDecayRateDownCost;
+	document.getElementById("redDecayRateDownCount").innerHTML = redDecayRateDownCount;
+	document.getElementById("redEnergyBarPercent").innerHTML = redEnergyBar;
+	document.getElementById("redIncreaseChargeCost").innerHTML = redIncreaseChargeCost;
+	document.getElementById("redIncreaseChargeCount").innerHTML = redIncreaseChargeCount;
+	document.getElementById("redChargeRate").innerHTML = redChargeRateDisplay;
+	document.getElementById("redDecayRate").innerHTML = redDecayRateDisplay;
+	document.getElementById("redUnlockBlueCost").innerHTML = redUnlockBlueCost
+	document.getElementById("bluePerSecond").innerHTML = bluePerSecond;
+	document.getElementById("blueAmount").innerHTML = blueAmount;
+	document.getElementById("blueConversionUpgradeCost").innerHTML = blueConversionUpgradeCost;
+	document.getElementById("blueConversionUpgradeCount").innerHTML = blueConversionUpgradeCount;
+	document.getElementById("blueDecayRateDownCost").innerHTML = blueDecayRateDownCost;
+	document.getElementById("blueEnergyBarPercent").innerHTML = blueEnergyBar;
+	document.getElementById("blueIncreaseChargeCost").innerHTML = blueIncreaseChargeCost;
+	document.getElementById("blueIncreaseChargeCount").innerHTML = blueIncreaseChargeCount;
+	document.getElementById("blueChargeRate").innerHTML = blueChargeRateDisplay;
+	document.getElementById("blueDecayRate").innerHTML = blueDecayRateDisplay;
+	document.getElementById("blueDecayRateDownCount").innerHTML = blueDecayRateDownCount;
+	document.getElementById("blueUnlockGreenCost").innerHTML = blueUnlockGreenCost;
+	document.getElementById("greenPerSecond").innerHTML = greenPerSecond;
+	document.getElementById("greenAmount").innerHTML = greenAmount;
+	document.getElementById("greenConversionUpgradeCost").innerHTML = greenConversionUpgradeCost;
+	document.getElementById("greenConversionUpgradeCount").innerHTML = greenConversionUpgradeCount;
+	document.getElementById("greenDecayRateDownCost").innerHTML = greenDecayRateDownCost;
+	document.getElementById("greenDecayRateDownCount").innerHTML = greenDecayRateDownCount;
+	document.getElementById("greenEnergyBarPercent").innerHTML = greenEnergyBar;
+	document.getElementById("greenIncreaseChargeCost").innerHTML = greenIncreaseChargeCost;
+	document.getElementById("greenIncreaseChargeCount").innerHTML = greenIncreaseChargeCount;
+	document.getElementById("greenChargeRate").innerHTML = greenChargeRateDisplay;
+	document.getElementById("greenDecayRate").innerHTML = greenDecayRateDisplay;
+	document.getElementById("greenUnlockYellowCost").innerHTML = greenUnlockYellowCost;
+
+	document.getElementById("redEnergyBar").style.width = redEnergyBar+"%";
+	document.getElementById("blueEnergyBar").style.width = blueEnergyBar+"%";
+	document.getElementById("greenEnergyBar").style.width = greenEnergyBar+"%";
+
+}, 10);
+
 
 // For tasks once per second:
 
 window.setInterval(function() {
 	redConvert();
 	blueConvert();
+	greenConvert();
 	redAmount = redAmount + redPerSecond;
 	blueAmount = blueAmount + bluePerSecond;
-	document.getElementById("redAmount").innerHTML = redAmount;
-	document.getElementById("blueAmount").innerHTML = blueAmount;
+	greenAmount = greenAmount + greenPerSecond;
 }, 1000);
 
 // For fast updating tasks:
@@ -245,68 +353,6 @@ window.setInterval(function() {
 window.setInterval(function() {
 	redEnergyBar = Math.round((redEnergy / redEnergyMax) * 100);
 	blueEnergyBar = Math.round((blueEnergy / blueEnergyMax) * 100);
-	document.getElementById("redEnergyBar").style.width = redEnergyBar+"%";
-	document.getElementById("blueEnergyBar").style.width = blueEnergyBar+"%";
-	document.getElementById("redEnergyBarPercent").innerHTML = redEnergyBar;
-	document.getElementById("blueEnergyBarPercent").innerHTML = blueEnergyBar;
-	calcRedPerSecond();
-	calcBluePerSecond();
+	greenEnergyBar = Math.round((greenEnergy / greenEnergyMax) * 100);
+	calcPerSecond();
 }, 10);
-
-
-// I REMOVED A WHOLE BUNCH OF BLUE SO I CAN JUST COPY RED AND CHANGE THE NAMES
-// HERE IS THE BACK UP OF THAT INCASE I MESS IT UP, WHICH I ALMOST CERTAINLY WILL 
-// function blueCharge() {
-// 	if(blueEnergy + blueChargeRate <= blueEnergyMax) {
-// 		blueEnergy = blueEnergy + blueChargeRate;
-// 	}
-// 	if(blueEnergy + blueChargeRate >= blueEnergyMax) {
-// 		blueEnergy = blueEnergyMax;
-// 	}
-// }
-
-// function blueConvert() {
-// 	if(blueEnergy > 0) {
-// 		bluePerSecondEnergy = Math.ceil(blueEnergyBar / 20);
-// 		blueEnergy--;
-// 	} else {
-// 		bluePerSecondEnergy = 0;
-// 	}
-// 	// document.getElementById("blueEnergy").innerHTML = blueEnergy;
-// }
-
-// function blueBuyOne() {
-// 	if(blueAmount >= blueBuyOneCost) {
-// 		blueAmount = blueAmount - blueBuyOneCost;
-// 		bluePerSecondAuto = bluePerSecondAuto + 1;
-// 		blueBuyOneCost = Math.round(blueBuyOneCost * costChangeRate);
-// 		document.getElementById("blueBuyOneCost").innerHTML = blueBuyOneCost;
-// 		document.getElementById("blueAmount").innerHTML = blueAmount;
-// 	}
-// }
-
-// function blueBuyTwo() {
-// 	if(blueAmount >= blueBuyTwoCost) {
-// 		blueAmount = blueAmount - blueBuyTwoCost;
-// 		bluePerSecondAuto = bluePerSecondAuto + 3;
-// 		blueBuyTwoCost = Math.round(blueBuyTwoCost * costChangeRate);
-// 		document.getElementById("blueBuyTwoCost").innerHTML = blueBuyTwoCost;
-// 		document.getElementById("blueAmount").innerHTML = blueAmount;
-// 	}
-// }
-
-// function blueIncreaseCharge() {
-// 	if(blueAmount >= blueIncreaseChargeCost) {
-// 		blueAmount = blueAmount - blueIncreaseChargeCost;
-// 		blueChargeRate++;
-// 		blueIncreaseChargeCost = Math.round(blueIncreaseChargeCost * costChangeRate);
-// 		document.getElementById("blueIncreaseChargeCost").innerHTML = blueIncreaseChargeCost;
-// 		document.getElementById("blueAmount").innerHTML = blueAmount;
-// 	}
-// }
-
-// function calcBluePerSecond() {
-// 	bluePerSecond = bluePerSecondAuto + bluePerSecondEnergy;
-// 	document.getElementById("bluePerSecond").innerHTML = bluePerSecond;
-// }
-
