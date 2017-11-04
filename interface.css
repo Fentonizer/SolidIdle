@@ -59,6 +59,15 @@ button:focus {
 	display: inline-block;
 }
 
+.oneTimeUpgrades {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.oneTime {
+	display: none;
+}
+
 .buildingsInfo {
 	font-size: 11px;
 	padding: 5px;
@@ -66,7 +75,7 @@ button:focus {
 	display: inline-block;
 	vertical-align: top;
 	pointer-events: none;
-	text-align: right;
+	text-align: left;
 }
 
 .buildingsInfo p {
@@ -112,17 +121,25 @@ button:focus {
 	margin: 0;
 }
 
-.oneTime {
-	display: none;
+.oneTimeUpgrades .upgradeButton button {
+	height: 100px;
+	width: 100px;
+	font-size: 10px;
 }
 
 .energyBar {
-	transition: width 0.5s;
+	transition: width 0.3s;
 	height: 100%;
 	position: absolute;
 	left: 0;
 	top: 0;
 	z-index: 1;
+}
+
+.energyCounts {
+	display: inline-block;
+	width: 150px;
+	text-align: center;
 }
 
 .convertingInfo {
@@ -134,6 +151,7 @@ button:focus {
 .convertingInfo img, button img {
 	width: 15px;
 	max-height: 15px;
+	padding: 0 3px;
 }
 
 .convertingInfo p {
@@ -152,23 +170,23 @@ button:focus {
 }
 
 .ltTwentyPercent {
-	background-color: #ffffff;
+	background-color: #fff;
 }
 
 .twentyPercent {
-	background-color: #dddddd;
+	background-color: #ddd;
 }
 
 .fortyPercent {
-	background-color: #bbbbbb;
+	background-color: #bbb;
 }
 
 .sixtyPercent {
-	background-color: #999999;
+	background-color: #999;
 }
 
 .eightyPercent {
-	background-color: #777777;
+	background-color: #777;
 }
 
 .shapeInfo {
@@ -185,12 +203,12 @@ button:focus {
 }
 
 .red.upgradeButton button, .red.chargeInfo button {
-	background-color: #ffdddd;
-	border: solid #ff4433 3px;
+	background-color: #fdd;
+	border: solid #f43 3px;
 }
 
 .red.upgradeButton button:hover, .red.chargeInfo button:hover {
-	background-color: #ff6655;
+	background-color: #f65;
 }
 
 #redEnergyBar {
@@ -199,11 +217,7 @@ button:focus {
 }
 
 .red .chargeBar {
-	background-color: #ff4444;
-}
-
-#redEnergyBarPercent {
-	padding-left: 10px;
+	background-color: #f44;
 }
 
 /*[[[BLUE ITEMS]]]:*/
@@ -219,12 +233,12 @@ button:focus {
 }
 
 .blue.upgradeButton button, .blue.chargeInfo button {
-	background-color: #ddddff;
+	background-color: #ddf;
 	border: solid #3344ff 3px;
 }
 
 .blue.upgradeButton button:hover, .blue.chargeInfo button:hover {
-	background-color: #6655ff;
+	background-color: #65f;
 	color: white;
 }
 
@@ -234,11 +248,7 @@ button:focus {
 }
 
 .blue .chargeBar {
-	background-color: #4444ff;
-}
-
-#blueEnergyBarPercent {
-	padding-left: 10px;
+	background-color: #44f;
 }
 
 /*[[[GREEN ITEMS]]]:*/
@@ -254,12 +264,12 @@ button:focus {
 }
 
 .green.upgradeButton button, .green.chargeInfo button {
-	background-color: #ddffdd;
-	border: solid #33ff44 3px;
+	background-color: #dfd;
+	border: solid #3f4 3px;
 }
 
 .green.upgradeButton button:hover, .green.chargeInfo button:hover {
-	background-color: #66ff55;
+	background-color: #6f5;
 	color: black;
 }
 
@@ -269,9 +279,17 @@ button:focus {
 }
 
 .green .chargeBar {
-	background-color: #44ff44;
+	background-color: #4f4;
 }
 
-#greenEnergyBarPercent {
-	padding-left: 10px;
+/*[[[PURPLE ITEMS]]]:*/
+
+.purple.upgradeButton button, .purple.chargeInfo button {
+	background-color: #ece;
+	border: solid #e3f 3px;
+}
+
+.purple.upgradeButton button:hover, .purple.chargeInfo button:hover {
+	background-color: #d5d;
+	color: black;
 }

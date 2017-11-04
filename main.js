@@ -5,6 +5,7 @@ var costChangeRate = 1.1;
 //RED VARS
 
 var redEnergy = 0;
+var redEnergyDisplay = redEnergy.toFixed(2);
 var redEnergyMax = 100;
 var redPerSecond = 0;
 var redAmount = 0;
@@ -28,7 +29,8 @@ var redUnlockBlueCost = 7500;
 //BLUE VARS
 
 var blueEnergy = 0;
-var blueEnergyMax = 100;
+var blueEnergyDisplay = Math.round(blueEnergy);
+var blueEnergyMax = 50;
 var bluePerSecond = 0;
 var blueAmount = 0;
 
@@ -37,33 +39,34 @@ var blueConversionUpgradeCount = 0;
 
 var blueDecayRateDownCost = 1000;
 var blueDecayRateDownCount = 0;
-var blueDecayRate = 2, blueDecayRateDisplay = blueDecayRate.toFixed(2);
+var blueDecayRate = 1.5, blueDecayRateDisplay = blueDecayRate.toFixed(2);
 
-var blueChargeRate = 2, blueChargeRateDisplay = blueChargeRate.toFixed(2);
+var blueChargeRate = 1.5, blueChargeRateDisplay = blueChargeRate.toFixed(2);
 var blueConversionRate = 0;
 
 var blueIncreaseChargeCost = 2500;
 var blueIncreaseChargeCount = 0;  
 
 var blueEnergyBar = 0;
-var blueUnlockGreenCost = 75000;
+var blueUnlockGreenCost = 50000;
 
 
 //GREEN VARS
 
 var greenEnergy = 0;
-var greenEnergyMax = 100;
+var greenEnergyDisplay = Math.round(greenEnergy);
+var greenEnergyMax = 200;
 var greenPerSecond = 0;
 var greenAmount = 0;
 
 var greenConversionUpgradeCost = 300;
 var greenConversionUpgradeCount = 0;
 
-var greenDecayRateDownCost = 500;
+var greenDecayRateDownCost = 5000;
 var greenDecayRateDownCount = 0;
-var greenDecayRate = 3, greenDecayRateDisplay = greenDecayRate.toFixed(2);
+var greenDecayRate = 1, greenDecayRateDisplay = greenDecayRate.toFixed(2);
 
-var greenChargeRate = 1, greenChargeRateDisplay = greenChargeRate.toFixed(2);
+var greenChargeRate = 3, greenChargeRateDisplay = greenChargeRate.toFixed(2);
 var greenConversionRate = 0;
 
 var greenIncreaseChargeCost = 1000;
@@ -74,8 +77,8 @@ var greenUnlockYellowCost = 500000;
 
 window.addEventListener('load',
 	function() {
-		// document.getElementById("redUnlockBlueCost").innerHTML = redUnlockBlueCost;
 		document.getElementById("redPerSecond").innerHTML = redPerSecond;
+		document.getElementById("redEnergyDisplay").innerHTML = redEnergyDisplay;
 		document.getElementById("redAmount").innerHTML = redAmount;
 		document.getElementById("redConversionUpgradeCost").innerHTML = redConversionUpgradeCost;
 		document.getElementById("redDecayRateDownCost").innerHTML = redDecayRateDownCost;
@@ -84,9 +87,11 @@ window.addEventListener('load',
 		document.getElementById("redIncreaseChargeCount").innerHTML = redIncreaseChargeCount;
 		document.getElementById("redChargeRate").innerHTML = redChargeRateDisplay;
 		document.getElementById("redDecayRate").innerHTML = redDecayRateDisplay;
+		document.getElementById("redEnergyMax").innerHTML = redEnergyMax;
 		document.getElementById("redUnlockBlueCost").innerHTML = redUnlockBlueCost
 
 		document.getElementById("bluePerSecond").innerHTML = bluePerSecond;
+		document.getElementById("blueEnergyDisplay").innerHTML = blueEnergyDisplay;
 		document.getElementById("blueAmount").innerHTML = blueAmount;
 		document.getElementById("blueConversionUpgradeCost").innerHTML = blueConversionUpgradeCost;
 		document.getElementById("blueDecayRateDownCost").innerHTML = blueDecayRateDownCost;
@@ -95,9 +100,11 @@ window.addEventListener('load',
 		document.getElementById("blueIncreaseChargeCount").innerHTML = blueIncreaseChargeCount;
 		document.getElementById("blueChargeRate").innerHTML = blueChargeRateDisplay;
 		document.getElementById("blueDecayRate").innerHTML = blueDecayRateDisplay;
+		document.getElementById("blueEnergyMax").innerHTML = blueEnergyMax;
 		document.getElementById("blueUnlockGreenCost").innerHTML = blueUnlockGreenCost;
 
 		document.getElementById("greenPerSecond").innerHTML = greenPerSecond;
+		document.getElementById("greenEnergyDisplay").innerHTML = greenEnergyDisplay;
 		document.getElementById("greenAmount").innerHTML = greenAmount;
 		document.getElementById("greenConversionUpgradeCost").innerHTML = greenConversionUpgradeCost;
 		document.getElementById("greenDecayRateDownCost").innerHTML = greenDecayRateDownCost;
@@ -106,8 +113,8 @@ window.addEventListener('load',
 		document.getElementById("greenIncreaseChargeCost").innterHTML = greenIncreaseChargeCount;
 		document.getElementById("greenChargeRate").innerHTML = greenChargeRateDisplay;
 		document.getElementById("greenDecayRate").innerHTML = greenDecayRateDisplay;
+		document.getElementById("greenEnergyMax").innerHTML = greenEnergyMax;
 		document.getElementById("greenUnlockYellowCost").innerHTML = greenUnlockYellowCost;
-		
 }, false);
 
 // global functions
@@ -295,6 +302,7 @@ function greenDecayRateDown() {
 window.setInterval(function () {
 	document.getElementById("redPerSecond").innerHTML = redPerSecond;
 	document.getElementById("redAmount").innerHTML = redAmount;
+	document.getElementById("redEnergyDisplay").innerHTML = redEnergyDisplay;
 	document.getElementById("redConversionUpgradeCost").innerHTML = redConversionUpgradeCost;
 	document.getElementById("redConversionUpgradeCount").innerHTML = redConversionUpgradeCount;
 	document.getElementById("redDecayRateDownCost").innerHTML = redDecayRateDownCost;
@@ -307,6 +315,7 @@ window.setInterval(function () {
 	document.getElementById("redUnlockBlueCost").innerHTML = redUnlockBlueCost
 	document.getElementById("bluePerSecond").innerHTML = bluePerSecond;
 	document.getElementById("blueAmount").innerHTML = blueAmount;
+	document.getElementById("blueEnergyDisplay").innerHTML = blueEnergyDisplay;
 	document.getElementById("blueConversionUpgradeCost").innerHTML = blueConversionUpgradeCost;
 	document.getElementById("blueConversionUpgradeCount").innerHTML = blueConversionUpgradeCount;
 	document.getElementById("blueDecayRateDownCost").innerHTML = blueDecayRateDownCost;
@@ -319,6 +328,7 @@ window.setInterval(function () {
 	document.getElementById("blueUnlockGreenCost").innerHTML = blueUnlockGreenCost;
 	document.getElementById("greenPerSecond").innerHTML = greenPerSecond;
 	document.getElementById("greenAmount").innerHTML = greenAmount;
+	document.getElementById("greenEnergyDisplay").innerHTML = greenEnergyDisplay;
 	document.getElementById("greenConversionUpgradeCost").innerHTML = greenConversionUpgradeCost;
 	document.getElementById("greenConversionUpgradeCount").innerHTML = greenConversionUpgradeCount;
 	document.getElementById("greenDecayRateDownCost").innerHTML = greenDecayRateDownCost;
@@ -354,5 +364,8 @@ window.setInterval(function() {
 	redEnergyBar = Math.round((redEnergy / redEnergyMax) * 100);
 	blueEnergyBar = Math.round((blueEnergy / blueEnergyMax) * 100);
 	greenEnergyBar = Math.round((greenEnergy / greenEnergyMax) * 100);
+	redEnergyDisplay = redEnergy.toFixed(2);
+	blueEnergyDisplay = blueEnergy.toFixed(2);
+	greenEnergyDisplay = greenEnergy.toFixed(2);
 	calcPerSecond();
 }, 10);
