@@ -75,6 +75,29 @@ var greenIncreaseChargeCount = 0;
 var greenEnergyBar = 0;
 var greenUnlockYellowCost = 500000;
 
+//YELLOW VARS
+
+var yellowEnergy = 0;
+var yellowEnergyDisplay = Math.round(yellowEnergy);
+var yellowEnergyMax = 1000;
+var yellowPerSecond = 0;
+var yellowAmount = 0;
+
+var yellowConversionUpgradeCost = 50000;
+var yellowConversionUpgradeCount = 0;
+
+var yellowDecayRateDownCost = 50000;
+var yellowDecayRateDownCount = 0;
+var yellowDecayRate = 1, yellowDecayRateDisplay = yellowDecayRate.toFixed(2);
+
+var yellowChargeRate = 20, yellowChargeRateDisplay = yellowChargeRate.toFixed(2);
+var yellowConversionRate = 0;
+
+var yellowIncreaseChargeCost = 50000;
+var yellowIncreaseChargeCount = 0;  
+
+var yellowEnergyBar = 0;
+
 window.addEventListener('load',
 	function() {
 		document.getElementById("redPerSecond").innerHTML = redPerSecond;
@@ -115,6 +138,19 @@ window.addEventListener('load',
 		document.getElementById("greenDecayRate").innerHTML = greenDecayRateDisplay;
 		document.getElementById("greenEnergyMax").innerHTML = greenEnergyMax;
 		document.getElementById("greenUnlockYellowCost").innerHTML = greenUnlockYellowCost;
+
+		document.getElementById("yellowPerSecond").innerHTML = yellowPerSecond;
+		document.getElementById("yellowEnergyDisplay").innerHTML = yellowEnergyDisplay;
+		document.getElementById("yellowAmount").innerHTML = yellowAmount;
+		document.getElementById("yellowConversionUpgradeCost").innerHTML = yellowConversionUpgradeCost;
+		document.getElementById("yellowDecayRateDownCost").innerHTML = yellowDecayRateDownCost;
+		document.getElementById("yellowEnergyBarPercent").innerHTML = yellowEnergyBarPercent;
+		document.getElementById("yellowIncreaseChargeCost").innerHTML = yellowIncreaseChargeCost;
+		document.getElementById("yellowIncreaseChargeCost").innterHTML = yellowIncreaseChargeCount;
+		document.getElementById("yellowChargeRate").innerHTML = yellowChargeRateDisplay;
+		document.getElementById("yellowDecayRate").innerHTML = yellowDecayRateDisplay;
+		document.getElementById("yellowEnergyMax").innerHTML = yellowEnergyMax;
+
 }, false);
 
 // global functions
@@ -123,6 +159,7 @@ function calcPerSecond() {
 	redPerSecond = redConversionRate;
 	bluePerSecond = blueConversionRate;
 	greenPerSecond = greenConversionRate;
+	yellowPerSecond = yellowConversionRate;
 }
 
 // [[[RED CHARGING/BUYING/ETC]]]
@@ -298,6 +335,68 @@ function greenDecayRateDown() {
 	}
 }
 
+function greenUnlockYellow() {
+	if(greenAmount >= greenUnlockYellowCost) {
+		greenAmount = greenAmount - greenUnlockYellowCost;
+		var x = document.getElementsByClassName("yellowHidden");
+		var i;
+		for (i = 0; i < x.length; i++) {
+			x[i].style.opacity = "1";
+			x[i].style.pointerEvents = "auto";
+		document.getElementById("yellowUnlock").className = "oneTime";
+		}
+	}
+}
+
+// [[[YELLOW CHARGING/BUYING/ETC]]]
+
+function yellowCharge() {
+	if(yellowEnergy + yellowChargeRate <= yellowEnergyMax) {
+		yellowEnergy = yellowEnergy + yellowChargeRate;
+	}
+	if(yellowEnergy + yellowChargeRate >= yellowEnergyMax) {
+		yellowEnergy = yellowEnergyMax;
+	}
+}
+
+function yellowConvert() {
+	if(yellowEnergy > 0) {
+		yellowConversionRate = Math.ceil(yellowEnergyBar / 20) * (yellowConversionUpgradeCount + 1);
+		yellowEnergy = Math.max(yellowEnergy - yellowDecayRate, 0);
+	}
+	else {
+		yellowConversionRate = 0;
+	}
+}
+
+function yellowConversionUpgrade() {
+	if(redAmount >= yellowConversionUpgradeCost) {
+		redAmount = redAmount - yellowConversionUpgradeCost;
+		yellowConversionUpgradeCost = Math.round(yellowConversionUpgradeCost * costChangeRate);
+		yellowConversionUpgradeCount++;
+	}
+}
+
+function yellowIncreaseCharge() {
+	if(blueAmount >= yellowIncreaseChargeCost) {
+		blueAmount = blueAmount - yellowIncreaseChargeCost;
+		yellowChargeRate = Math.round((yellowChargeRate + 0.15) * 100) / 100;
+		yellowIncreaseChargeCost = Math.round(yellowIncreaseChargeCost * costChangeRate);
+		yellowChargeRateDisplay = yellowChargeRate.toFixed(2);
+		yellowIncreaseChargeCount++;
+	}
+}
+
+function yellowDecayRateDown() {
+	if(greenAmount >= yellowDecayRateDownCost) {
+		greenAmount = greenAmount - yellowDecayRateDownCost;
+		yellowDecayRateDownCost = Math.round(yellowDecayRateDownCost * costChangeRate);
+		yellowDecayRateDownCount++;
+		yellowDecayRate = Math.round((yellowDecayRate * 0.95) * 100) / 100;
+		yellowDecayRateDisplay = yellowDecayRate.toFixed(2)
+	}
+}
+
 // write all variables to the page periodically
 window.setInterval(function () {
 	document.getElementById("redPerSecond").innerHTML = redPerSecond;
@@ -339,10 +438,23 @@ window.setInterval(function () {
 	document.getElementById("greenChargeRate").innerHTML = greenChargeRateDisplay;
 	document.getElementById("greenDecayRate").innerHTML = greenDecayRateDisplay;
 	document.getElementById("greenUnlockYellowCost").innerHTML = greenUnlockYellowCost;
+	document.getElementById("yellowPerSecond").innerHTML = yellowPerSecond;
+	document.getElementById("yellowAmount").innerHTML = yellowAmount;
+	document.getElementById("yellowEnergyDisplay").innerHTML = yellowEnergyDisplay;
+	document.getElementById("yellowConversionUpgradeCost").innerHTML = yellowConversionUpgradeCost;
+	document.getElementById("yellowConversionUpgradeCount").innerHTML = yellowConversionUpgradeCount;
+	document.getElementById("yellowDecayRateDownCost").innerHTML = yellowDecayRateDownCost;
+	document.getElementById("yellowDecayRateDownCount").innerHTML = yellowDecayRateDownCount;
+	document.getElementById("yellowEnergyBarPercent").innerHTML = yellowEnergyBar;
+	document.getElementById("yellowIncreaseChargeCost").innerHTML = yellowIncreaseChargeCost;
+	document.getElementById("yellowIncreaseChargeCount").innerHTML = yellowIncreaseChargeCount;
+	document.getElementById("yellowChargeRate").innerHTML = yellowChargeRateDisplay;
+	document.getElementById("yellowDecayRate").innerHTML = yellowDecayRateDisplay;
 
 	document.getElementById("redEnergyBar").style.width = redEnergyBar+"%";
 	document.getElementById("blueEnergyBar").style.width = blueEnergyBar+"%";
 	document.getElementById("greenEnergyBar").style.width = greenEnergyBar+"%";
+	document.getElementById("yellowEnergyBar").style.width = yellowEnergyBar+"%";
 
 }, 10);
 
@@ -353,9 +465,11 @@ window.setInterval(function() {
 	redConvert();
 	blueConvert();
 	greenConvert();
+	yellowConvert();
 	redAmount = redAmount + redPerSecond;
 	blueAmount = blueAmount + bluePerSecond;
 	greenAmount = greenAmount + greenPerSecond;
+	yellowAmount = yellowAmount + yellowPerSecond;
 }, 1000);
 
 // For fast updating tasks:
@@ -364,8 +478,10 @@ window.setInterval(function() {
 	redEnergyBar = Math.round((redEnergy / redEnergyMax) * 100);
 	blueEnergyBar = Math.round((blueEnergy / blueEnergyMax) * 100);
 	greenEnergyBar = Math.round((greenEnergy / greenEnergyMax) * 100);
+	yellowEnergyBar = Math.round((yellowEnergy / yellowEnergyMax) * 100);
 	redEnergyDisplay = redEnergy.toFixed(2);
 	blueEnergyDisplay = blueEnergy.toFixed(2);
 	greenEnergyDisplay = greenEnergy.toFixed(2);
+	yellowEnergyDisplay = yellowEnergy.toFixed(2);
 	calcPerSecond();
 }, 10);

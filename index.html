@@ -18,7 +18,7 @@
 			<em><p>early alpha 04-11-2017</p>
 			<p>Don't forget to <strong>CTRL+refresh</strong> if checking for updates! The javascript will be stored locally.</p></em>
 		</div>
-
+<!-- RED RED RED RED RED RED RED -->
 		<div class="red colourWrapper">
 			<div class="gameArea">
 
@@ -88,7 +88,7 @@
 				</div>
 			</div>
 		</div>
-
+<!-- BLUE BLUE BLUE BLUE BLUE BLUE BLUE -->
 		<div class="blue colourWrapper blueHidden">
 			<div class="gameArea">
 
@@ -160,7 +160,7 @@
 		</div>
 
 		</div>
-
+<!-- GREEN GREEN GREEN GREEN GREEN GREEN GREEN -->
 		<div class="green colourWrapper greenHidden">
 			<div class="gameArea">
 
@@ -220,6 +220,63 @@
 				<p>Charge Rate: +<span class="variable" id="greenChargeRate">0</span></p>
 				<p>Decay Rate: -<span class="variable" id="greenDecayRate">0</span></p>
 				<p>Max Charge: <span class="variable" id="greenEnergyMax">0</span></p>
+			</div>
+		</div>
+
+<!-- YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW YELLOW -->
+		<div class="yellow colourWrapper yellowHidden">
+			<div class="gameArea">
+
+				<div class="yellow chargeInfo">	
+					<button class="button" onMouseDown="yellowCharge()">CHARGE</button>
+					<div class="chargeBar">
+						<div class="ltTwentyPercent"></div>
+						<div class="twentyPercent"></div>
+						<div class="fortyPercent"></div>
+						<div class="sixtyPercent"></div>
+						<div class="eightyPercent"></div>
+						<div class="energyBar" id="yellowEnergyBar"></div>
+					</div>
+
+					<div class="energyCounts">
+						<span id="yellowEnergyDisplay">0</span> | <span id="yellowEnergyBarPercent">0</span>%
+					</div>
+				</div>
+
+				<div class="shapeInfo">
+					<img src="yellow.png" alt="YELLOW">:<span id="yellowAmount" class="variable">0</span>
+				</div>
+				
+				<div class="upgradesInfo">
+					<div class="convertingInfo">
+						<span id="yellowPerSecond" class="variable">0</span><br><img src="yellow.png" alt="YELLOW">p/s
+						<p>owned:</p>
+					</div>
+					<div class="red upgradeButton">
+						<button onClick="yellowConversionUpgrade()">Conv+<br>
+						<span id="yellowConversionUpgradeCost" class="variable">0</span><br>
+						<img src="red.png" alt="RED"></button>
+						<p><span id="yellowConversionUpgradeCount">0</span></p>
+					</div>
+					<div class="blue upgradeButton">
+					<button onClick="yellowIncreaseCharge()">Charge+<br>
+						<span id="yellowIncreaseChargeCost" class="variable">0</span><br>
+						<img src="blue.png" alt="BLUE"></button>
+						<p><span id="yellowIncreaseChargeCount">0</span></p>
+					</div>
+					<div class="green upgradeButton">
+					<button onClick="yellowDecayRateDown()">Decay-<br>
+						<span id="yellowDecayRateDownCost" class="variable">0</span><br>
+						<img src="green.png" alt="GREEN"></button>
+						<p><span id="yellowDecayRateDownCount">0</span></p>
+					</div>
+				</div>
+			</div>
+
+			<div class="yellow buildingsInfo">
+				<p>Charge Rate: +<span class="variable" id="yellowChargeRate">0</span></p>
+				<p>Decay Rate: -<span class="variable" id="yellowDecayRate">0</span></p>
+				<p>Max Charge: <span class="variable" id="yellowEnergyMax">0</span></p>
 			</div>
 		</div>
 

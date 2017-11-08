@@ -282,6 +282,37 @@ button:focus {
 	background-color: #4f4;
 }
 
+/*[[[YELLOW ITEMS]]]:*/
+
+.yellowHidden {
+	opacity: 0;
+	transition: opacity 3s;
+	pointer-events: none;
+}
+
+.yellow.colourWrapper {
+	border-color: #ff9;
+}
+
+.yellow.upgradeButton button, .yellow.chargeInfo button {
+	background-color: #ffd;
+	border: solid #ff3 3px;
+}
+
+.yellow.upgradeButton button:hover, .yellow.chargeInfo button:hover {
+	background-color: #ff5;
+	color: black;
+}
+
+#yellowEnergyBar {
+	width: 0;
+	background-color: #ff0;
+}
+
+.yellow .chargeBar {
+	background-color: #dd0;
+}
+
 /*[[[PURPLE ITEMS]]]:*/
 
 .purple.upgradeButton button, .purple.chargeInfo button {
@@ -293,3 +324,5 @@ button:focus {
 	background-color: #d5d;
 	color: black;
 }
+
+
